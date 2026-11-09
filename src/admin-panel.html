@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Haapsaly Bassline</title>
+    <link rel="stylesheet" href="css/admin-panel.css">
+    <link rel="icon" href="https://hpsbassline.club/favicon.ico" sizes="any">
+    <link rel="icon" href="https://hpsbassline.club/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                    <path d="M19.14 12.94c.04-.31.06-.63.06-.94 0-.31-.02-.63-.06-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/>
+                </svg>
+                Админ-панель HPS Bassline
+            </h1>
+            <div class="header-actions">
+                <button class="btn btn-secondary" id="viewHomeBtn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                    </svg>
+                    На сайт
+                </button>
+                <button class="btn btn-danger" id="logoutBtn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                        <path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/>
+                    </svg>
+                    Выйти
+                </button>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2 id="formTitle">Создать новый релиз</h2>
+            <form id="releaseForm" novalidate>
+                <div class="form-group">
+                    <label>Название альбома *</label>
+                    <input type="text" id="title" placeholder="Midnight Dreams" required maxlength="200">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Исполнитель *</label>
+                        <input type="text" id="artist" placeholder="Luna" required maxlength="200">
+                    </div>
+                    <div class="form-group">
+                        <label>URL (slug)</label>
+                        <input type="text" id="slug" placeholder="midnight-dreams" pattern="[a-z0-9](?:[a-z0-9-]{0,127})" maxlength="128">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Обложка *</label>
+                    <input type="file" id="cover" accept="image/jpeg,image/png,image/webp,image/gif">
+                    <div class="cover-preview">
+                        <img id="coverPreview" src="" alt="" style="display: none;">
+                        <span id="coverPlaceholder">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="40" height="40">
+                                <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Описание</label>
+                    <textarea id="description" rows="3" placeholder="Описание альбома..." maxlength="2000"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Ссылка на мерч (необязательно)</label>
+                    <input type="url" id="merch" placeholder="https://merch-store.com" maxlength="500">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Год выпуска</label>
+                        <input type="number" id="year" min="1900" max="2100" value="2024">
+                    </div>
+                    <div class="form-group">
+                        <label>Жанр (через запятую)</label>
+                        <input type="text" id="genre" placeholder="Happy Hardcore, Hardcore" maxlength="500">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Сервисы</label>
+                    <div id="servicesContainer" class="services-container"></div>
+                    <button type="button" class="btn btn-secondary" id="addServiceBtn" style="margin-top: 10px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                        </svg>
+                        Добавить сервис
+                    </button>
+                </div>
+
+                <div class="form-group">
+                    <label>Треки</label>
+                    <div id="tracksContainer" class="tracks-container"></div>
+                    <button type="button" class="btn btn-secondary" id="addTrackBtn" style="margin-top: 10px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                        </svg>
+                        Добавить трек
+                    </button>
+                </div>
+
+                <div style="display: flex; gap: 10px; margin-top: 30px;">
+                    <button type="submit" class="btn btn-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                            <path d="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"/>
+                        </svg>
+                        Сохранить релиз
+                    </button>
+                    <button type="button" class="btn btn-secondary" id="resetFormBtn">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                        </svg>
+                        Отмена
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div class="form-section">
+            <h2>Мои релизы</h2>
+            <div id="releasesList" class="releases-list"></div>
+        </div>
+    </div>
+
+    <div id="loginModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="loginModalTitle">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="loginModalTitle">Вход в админ-панель</h2>
+            </div>
+            <form id="loginFormModal">
+                <div class="form-group">
+                    <label for="loginPassword">Пароль</label>
+                    <input type="password" id="loginPassword" required autofocus>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <button type="submit" class="btn btn-primary">Войти</button>
+                    <button type="button" class="btn btn-secondary" id="loginCancelBtn">Отмена</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/admin-panel.js"></script>
+</body>
+</html>

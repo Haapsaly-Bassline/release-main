@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Releases</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="https://hpsbassline.club/favicon.ico" sizes="any">
+    <link rel="icon" href="https://hpsbassline.club/favicon.ico" type="image/x-icon">
+    
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="HPS Bassline">
+    <meta property="og:title" content="HPS Bassline Releases">
+    <meta property="og:description" content="All releases from Haapsaly Bassline label">
+    <meta property="og:image" content="https://release.hpsbassline.club/og-default.jpg">
+    <meta property="og:image:secure_url" content="https://release.hpsbassline.club/og-default.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://rls.hpsbassline.club/">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@hpsbassline">
+    <meta name="twitter:title" content="HPS Bassline Releases">
+    <meta name="twitter:description" content="All releases from Haapsaly Bassline label">
+    <meta name="twitter:image" content="https://release.hpsbassline.club/og-default.jpg">
+    <meta name="twitter:image:alt" content="HPS Bassline Releases">
+    
+    <link rel="stylesheet" href="/css/styles.css">
+    
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P6S0B5BW23"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P6S0B5BW23', {
+    cookie_domain: 'release.hpsbassline.club',
+    cookie_flags: 'SameSite=None;Secure'
+  });
+</script>
+
+</head>
+<body>
+    <!-- Hidden login button -->
+    <div class="admin-key" onclick="MusicHub.showLogin()" role="button" tabindex="0" aria-label="Admin login" title="Log IN">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+            <path d="M12 17A2 2 0 0 0 14 15c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm6-9h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM8.9 6c0-1.71 1.39-3.1 3.1-3.1s3.1 1.39 3.1 3.1v2H8.9V6zM18 20H6V10h12v10zm-5-5c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/>
+        </svg>
+    </div>
+
+    <!-- Main page -->
+    <div id="homePage" class="public-page">
+        <div class="public-header">
+            <h1>Releases</h1>
+            <p>All Releases here!</p>
+        </div>
+        
+        <div id="releasesList" class="releases-grid">
+            <div class="empty-state">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="48" height="48">
+                    <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+                </svg>
+                <p>Empty</p>
+            </div>
+        </div>
+
+        <div class="album-footer">
+            <div id="homeFooterContent">
+                <p>&copy; Haapsaly Bassline</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Album page -->
+    <div id="albumPage" class="album-page hidden">
+        <div class="album-background hidden" id="albumBackground"></div>
+        
+        <div class="album-content">
+            <div class="album-cover-container">
+                <img id="albumCover" class="album-cover" src="" alt="Cover">
+            </div>
+            
+            <div class="album-meta">
+                <h1 id="albumTitle" class="album-title"></h1>
+                <p id="albumArtist" class="album-artist"></p>
+                <div id="albumGenres" class="genre-badges hidden"></div>
+                <p id="albumDescription" class="album-description"></p>
+                <div id="albumYear" class="album-year"></div>
+            </div>
+
+            <div id="albumTracksSection" class="tracks-section hidden"></div>
+
+            <div class="links-section">
+                <div class="links-title">Listen us!</div>
+                <div id="albumLinks" class="links-grid">
+                    <!-- Links will be added here -->
+                </div>
+                
+                <a id="albumMerch" href="#" target="_blank" class="merch-button hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                        <path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12z"/>
+                    </svg>
+                    Buy Merch
+                </a>
+                
+                <button id="shareButton" class="merch-button" onclick="MusicHub.shareAlbum()">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                        <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/>
+                    </svg>
+                    Share
+                </button>
+            </div>
+
+            <div class="album-footer">
+                <div id="albumFooterContent">
+                    <p>&copy; Haapsaly Bassline</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Admin Panel Login</h2>
+            </div>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter password" required autofocus>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                        <path d="M11 7L9.6 8.4l2.6 2.6H2v2h10.2l-2.6 2.6L11 17l5-5-5-5zm9 12h-8v2h8c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-8v2h8v14z"/>
+                    </svg>
+                    Login
+                </button>
+                
+                <button type="button" class="btn btn-secondary" onclick="MusicHub.hideLogin()">
+                    Cancel
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="/js/app.js"></script>
+</body>
+</html>
